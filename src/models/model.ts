@@ -2,6 +2,6 @@
 
 export interface Todo {
     id: number;
-    todo: string;
+    todoName: string;
     isDone: boolean;
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import InputField from "./components/InputField";
 import { Todo } from "./models/model";
+import TodoList from "./components/TodoList";
 
 const App: React.FC = () => {
   //state to hold the todo typed in textbox
@@ -14,7 +15,7 @@ const App: React.FC = () => {
     e.preventDefault(); //to prevent the page from reloading
     if (todo) {
       //if todo exist will store whatever there in todo + set all the attributes
-      setTodos([...todos, { id: Date.now(), todo: todo, isDone: false }]);
+      setTodos([...todos, { id: Date.now(), todoName: todo, isDone: false }]);
       //clearing the todo after adding
       setTodo("");
     }
@@ -24,6 +25,7 @@ const App: React.FC = () => {
     <div className="App">
       <span className="heading">Taskify</span>
       <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 };
