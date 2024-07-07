@@ -12,11 +12,18 @@ const App: React.FC = () => {
   //creating handle fun to add todos: also we use e: React.FormEvent to prevent the page from reloading
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault(); //to prevent the page from reloading
-  }
+    if (todo) {
+      //if todo exist will store whatever there in todo + set all the attributes
+      setTodos([...todos, { id: Date.now(), todo: todo, isDone: false }]);
+      //clearing the todo after adding
+      setTodo("");
+    }
+  };
+  console.log(todos);
   return (
     <div className="App">
       <span className="heading">Taskify</span>
-      <InputField todo={todo} setTodo={setTodo} handleAdd = {handleAdd} />
+      <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
     </div>
   );
 };
