@@ -8,10 +8,15 @@ const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
   //state to hold all the todos along with details
   const [todos, setTodos] = useState<Todo[]>([]);
+
+  //creating handle fun to add todos: also we use e: React.FormEvent to prevent the page from reloading
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault(); //to prevent the page from reloading
+  }
   return (
     <div className="App">
       <span className="heading">Taskify</span>
-      <InputField todo={todo} setTodo={setTodo} />
+      <InputField todo={todo} setTodo={setTodo} handleAdd = {handleAdd} />
     </div>
   );
 };
